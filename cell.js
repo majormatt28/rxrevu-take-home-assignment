@@ -27,12 +27,12 @@ function findActiveCell(grid) {
     if (grid[1][1] === "x") {
         counter -= 1;
     }
-    console.log("The answer should be: ", counter);
+    return(counter);
 }
-findActiveCell(grid1);
-findActiveCell(grid2);
-findActiveCell(grid3);
-findActiveCell(grid4);
+console.log("The answer should be: ",findActiveCell(grid1));
+console.log("The answer should be: ",findActiveCell(grid2));
+console.log("The answer should be: ",findActiveCell(grid3));
+console.log("The answer should be: ",findActiveCell(grid4));
 // console.log("output: ",grid1);
 // console.log("output: ",grid2);
 // console.log("output: ",grid3);
