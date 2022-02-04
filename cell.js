@@ -33,7 +33,3 @@ console.log("The answer should be: ",findActiveCell(grid1));
 console.log("The answer should be: ",findActiveCell(grid2));
 console.log("The answer should be: ",findActiveCell(grid3));
 console.log("The answer should be: ",findActiveCell(grid4));
-// console.log("output: ",grid1);
-// console.log("output: ",grid2);
-// console.log("output: ",grid3);
-// console.log("output: ",grid4);
