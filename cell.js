@@ -14,22 +14,39 @@ let grid4 = [ ["x", "x", "x"],
               [" ", " ", " "], 
               [" ", "x", " "] ];
 
-function findActiveCell(grid) {
+function countActiveCell(grid, centerCell) {
     let counter = 0;
-    for (let j = 0; j < grid.length; j++) {
-        let row = grid[j]; 
-    for (let i = 0; i < row.length; i++) {
-            if(row[i] === "x") {
+    for (let i = 0; i < grid.length; i++) {
+        const row = grid[i];
+        for (let j = 0; j < row.length; j++) {
+            const cell = row[j];
+            const thisCoordinate = [i, j];
+            const isCenterCell = areTheSame(centerCell, thisCoordinate );
+            const isNeighbor = areNeighbors(centerCell, thisCoordinate);
+            const isActive = isCellActive(cell); 
+            if (!isCenterCell && isNeighbor && isActive) {
                 counter++;
             }
         }
-    }   
-    if (grid[1][1] === "x") {
-        counter -= 1;
     }
-    return(counter);
+    return counter;
 }
-console.log("The answer should be: ",findActiveCell(grid1));
-console.log("The answer should be: ",findActiveCell(grid2));
-console.log("The answer should be: ",findActiveCell(grid3));
-console.log("The answer should be: ",findActiveCell(grid4));
+
+function areTheSame(a,b) {
+    return a[0] === b[0] && a[1] === b[1];  
+}
+
+function areNeighbors(c,d) {
+    const distVer = Math.abs(c[0] - d[0]);
+    const distHor = Math.abs(c[1] - d[1]);
+    return distVer <= 1 && distHor <= 1;
+}
+
+function isCellActive(e) {
+    return e === "x";
+}
+
+console.log("The answer should be: ",countActiveCell(grid1, [0,0]));
+console.log("The answer should be: ",countActiveCell(grid2, [0,0]));
+console.log("The answer should be: ",countActiveCell(grid3, [0,0]));
+console.log("The answer should be: ",countActiveCell(grid4, [0,0]));
