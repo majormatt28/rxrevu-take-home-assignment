@@ -46,6 +46,34 @@ function isCellActive(e) {
     return e === "x";
 }
 
+// refacored code
+
+// function countActiveCell(grid, centerCell) {
+//     let counter = 0;
+//     for (let i = 0; i < grid.length; i++) {
+//         const row = grid[i];
+//         counter = innerRow(centerCell, counter, row, i);
+//     }
+//     return counter;
+// }
+
+// function innerRow(centerCell, counter, row, i) {
+//     let c = counter;
+//     for (let j = 0; j < row.length; j++) {
+//         const cell = row[j];
+//         const thisCoordinate = [i, j];
+//         const distVer = Math.abs(centerCell[0] - thisCoordinate[0]);
+//         const distHor = Math.abs(centerCell[1] - thisCoordinate[1]);
+//         const isCenterCell = centerCell[0] === thisCoordinate[0] && centerCell[1] === thisCoordinate[1];
+//         const isNeighbor = distVer <= 1 && distHor <= 1;
+//         const isActive = cell === "x"; 
+//         if (!isCenterCell && isNeighbor && isActive) {
+//             c++;
+//         }
+//     } 
+//     return c;
+// }
+
 console.log("The answer should be: ",countActiveCell(grid1, [0,0]));
 console.log("The answer should be: ",countActiveCell(grid2, [0,0]));
 console.log("The answer should be: ",countActiveCell(grid3, [0,0]));
