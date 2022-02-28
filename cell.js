@@ -75,7 +75,7 @@ function isCellActive(e) {
     return e === "x";
 }
 
-// refacored code
+// refactored code
 
 // function countActiveCell(grid, centerCell) {
 //     let counter = 0;
