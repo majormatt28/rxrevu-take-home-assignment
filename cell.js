@@ -8,11 +8,40 @@ let grid2 = [ ["x", "x", " "],
 
 let grid3 = [ ["x", "x", "x"], 
               [" ", "x", " "], 
-              [" ", " ", " "] ]; 
+              [" ", "x", " "] ]; 
 
 let grid4 = [ ["x", "x", "x"], 
-              [" ", " ", " "], 
-              [" ", "x", " "] ];
+              [" ", "x", " "], 
+              [" ", " ", " "] ];
+
+
+
+function computeNext(grid) {
+    let newGrid = grid.map(elem => []);
+
+    for (let i = 0; i < grid.length; i++) {
+        const row = grid[i];
+        for (let j = 0; j < row.length; j++) {
+            let numActiveCells = countActiveCell(grid, [i, j]);
+            let cell = row[j];
+            let isActive = isCellActive(cell);
+            if (isActive && numActiveCells < 2) {
+                cell = " ";
+            } 
+            if (isActive && (numActiveCells === 2 || numActiveCells === 3)) {
+                cell = "x";
+            }
+            if (isActive && numActiveCells > 3) {
+                cell = " ";
+            }
+            if (!isActive && numActiveCells === 3) {
+                cell = "x";
+            }
+            newGrid[i][j] = cell;
+        }
+    }
+    return newGrid;
+}
 
 function countActiveCell(grid, centerCell) {
     let counter = 0;
@@ -74,7 +103,7 @@ function isCellActive(e) {
 //     return c;
 // }
 
-console.log("The answer should be: ",countActiveCell(grid1, [0,0]));
-console.log("The answer should be: ",countActiveCell(grid2, [0,0]));
-console.log("The answer should be: ",countActiveCell(grid3, [0,0]));
-console.log("The answer should be: ",countActiveCell(grid4, [0,0]));
+console.log("The answer should be: ",computeNext(grid1));
+console.log("The answer should be: ",computeNext(grid2));
+console.log("The answer should be: ",computeNext(grid3));
+console.log("The answer should be: ",computeNext(grid4));
